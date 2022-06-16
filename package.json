@@ -1,0 +1,28 @@
+{
+    "name": "@sdalu/db",
+    "version": "0.0.2",
+    "license": "Apache-2.0",
+    "description": "Provide basic database interaction.",
+    "repository": {
+	"type": "git",
+	"url": "git+https://github.com/sdalu/node-red-db.git"
+    },    "dependencies": {
+        "knex": "^2.1.0",
+        "mysql2": "^2.3.3",
+        "pg": "^8.7.3"
+    },
+    "keywords": [
+        "node-red",
+	"database"
+    ],
+    "node-red": {
+        "nodes": {
+            "db": "src/db.js",
+            "db-config": "src/db-config.js"
+        }
+    },
+    "author": {
+        "name": "Stephane D'Alu",
+        "email": "sdalu@sdalu.com"
+    }
+}

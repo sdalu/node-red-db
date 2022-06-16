@@ -1,0 +1,63 @@
+<script type="text/html" data-template-name="db-config">
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-fw fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+        <input type="text" id="node-config-input-name" data-i18n="[placeholder]node-red:common.label.name">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-client"><i class="fa fa-fw fa-archive"></i> Client</label>
+        <input type="text" id="node-config-input-client">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-host"><i class="fa fa-fw fa-globe"></i> Host</label>
+        <input type="text" id="node-config-input-host">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-port"><i class="fa fa-fw fa-random"></i> Port</label>
+        <input type="text" id="node-config-input-port">
+    </div>
+        <div class="form-row">
+        <label for="node-config-input-user"><i class="fa fa-fw fa-user"></i> User</label>
+        <input type="text" id="node-config-input-user">
+    </div>
+        <div class="form-row">
+        <label for="node-config-input-pass"><i class="fa fa-fw fa-lock"></i> Password</label>
+        <input type="password" id="node-config-input-password">
+    </div>
+    <div class="form-row">
+        <label for="node-config-input-dbname"><i class="fa fa-fw fa-database"></i> Database</label>
+        <input type="text" id="node-config-input-dbname">
+    </div>
+</script>
+  
+<script type="text/javascript">
+    RED.nodes.registerType('db-config', {
+        category: 'config',
+        defaults: {
+	    client: { value: "mysql2",    required: true },
+            host:   { value: "127.0.0.1", required: true },
+            port:   { value: "3306",      required: true },
+            dbname: { value: "",          required: true },
+            name:   { value: ""                          }
+        },
+        credentials: {
+            user:     {type: "text"     },
+            password: {type: "password" }
+        },
+        label: function() {
+            return this.name || this.dbname;
+        },
+	oneditprepare: function() {
+            $("#node-config-input-client").typedInput({
+              types: [ 
+                { value:   "mysql2",
+  	          options: [ { value: "mysql2", label: "MySQL / MariaDB" },
+	                     { value: "pg",     label: "PostgreSQL"      } ]
+                }
+              ]
+            });	
+	}
+    });
+</script>
+
+
+  
